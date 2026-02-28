@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Card from "./components/Card";
 import { 
   Home, 
   CalendarClock, 
@@ -39,12 +40,6 @@ const SectionHeader = ({ title, subtitle }) => (
   </div>
 );
 
-const Card = ({ title, children, className = "" }) => (
-  <div className={`bg-white rounded-xl shadow-sm border border-slate-200 p-6 ${className}`}>
-    {title && <h3 className="text-xl font-semibold text-blue-700 mb-4">{title}</h3>}
-    {children}
-  </div>
-);
 
 // --- SECTIONS ---
 
