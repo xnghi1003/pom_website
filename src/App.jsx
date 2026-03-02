@@ -300,7 +300,7 @@ const CaseStudies = () => {
 
         {/* DATA TABLES */}
         <div className="grid lg:grid-cols-2 gap-6">
-          <Card title="Table 13.2: Monthly Forecasts">
+          <Card title="Table 1: Monthly Forecasts">
             <table className="w-full text-sm text-left border-collapse">
               <thead className="bg-slate-100">
                 <tr>
@@ -322,7 +322,7 @@ const CaseStudies = () => {
             </table>
           </Card>
 
-          <Card title="Table 13.3: Cost Information">
+          <Card title="Table 2: Cost Information">
             <table className="w-full text-sm text-left border-collapse">
               <tbody>
                 <tr><td className="border p-2 font-medium">Inventory carrying cost</td><td className="border p-2">$5 per unit per month</td></tr>
@@ -339,33 +339,89 @@ const CaseStudies = () => {
 
         {/* GRAPH */}
         <Card title="Figure 1: Graph of Forecast vs. Average Demand">
-          <p className="text-sm text-slate-600 mb-4">
+          <p className="text-sm text-slate-600 mb-6">
             <strong>Step 1:</strong> Calculate average requirement: 6,200 units / 124 days = <strong>50 units per day</strong>.
           </p>
-          <div className="relative h-64 border-l-2 border-b-2 border-slate-800 ml-8 mt-4 pt-4 pr-4">
-            <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between text-xs text-slate-500 -ml-8">
-              <span className="text-right pr-2">70 -</span>
-              <span className="text-right pr-2">60 -</span>
-              <span className="text-right pr-2">50 -</span>
-              <span className="text-right pr-2">40 -</span>
-              <span className="text-right pr-2">30 -</span>
-              <span className="text-right pr-2">0 -</span>
-            </div>
-            
-            {/* The Average Line (50 units) */}
-            <div className="absolute top-[35.7%] left-0 w-full border-t-2 border-dashed border-red-500 z-10">
-               <span className="absolute -top-6 left-2 text-xs text-red-600 bg-white px-1">Level production (Average: 50/day)</span>
-            </div>
+          
+          <div className="w-full aspect-[2/1] max-h-[400px] mx-auto bg-white mb-4">
+            <svg viewBox="0 0 850 450" className="w-full h-full font-sans overflow-visible">
+              {/* Y-Axis Label */}
+              <text x="-200" y="40" fontSize="16" fill="#334155" fontWeight="bold" textAnchor="middle" transform="rotate(-90)">
+                Production rate per working day
+              </text>
+              
+              {/* Y-Axis scale marks and lines */}
+              {[
+                {val: 70, y: 50},
+                {val: 60, y: 112.5},
+                {val: 50, y: 175},
+                {val: 40, y: 237.5},
+                {val: 30, y: 300},
+                {val: 0, y: 350}
+              ].map(tick => (
+                <g key={tick.val}>
+                  <line x1="95" y1={tick.y} x2="100" y2={tick.y} stroke="#334155" strokeWidth="1.5" />
+                  <text x="85" y={tick.y + 5} fontSize="14" fill="#475569" textAnchor="end">{tick.val}</text>
+                </g>
+              ))}
+              
+              {/* Axes */}
+              <line x1="100" y1="50" x2="100" y2="350" stroke="#334155" strokeWidth="1.5" />
+              <line x1="100" y1="350" x2="780" y2="350" stroke="#334155" strokeWidth="1.5" />
+              
+              {/* Bars */}
+              <g>
+                <rect x="100.5" y="231.25" width="108" height="118.25" fill="#dbeafe" stroke="#2563eb" strokeWidth="1.5" />
+                <text x="154.5" y="248" fontSize="14" fill="#1e40af" fontWeight="bold" textAnchor="middle">Jan (41)</text>
+                
+                <rect x="208.5" y="243.75" width="108" height="105.75" fill="#dbeafe" stroke="#2563eb" strokeWidth="1.5" />
+                <text x="262.5" y="260" fontSize="14" fill="#1e40af" fontWeight="bold" textAnchor="middle">Feb (39)</text>
 
-            {/* The Bars (Forecast Demand) */}
-            <div className="absolute bottom-0 left-0 w-full h-full flex items-end">
-              <div className="w-1/6 bg-blue-100 border-t-2 border-r-2 border-blue-600" style={{height: '58.5%'}}><div className="text-center mt-2 text-xs font-bold text-blue-800">Jan (41)</div></div>
-              <div className="w-1/6 bg-blue-100 border-t-2 border-r-2 border-blue-600" style={{height: '55.7%'}}><div className="text-center mt-2 text-xs font-bold text-blue-800">Feb (39)</div></div>
-              <div className="w-1/6 bg-blue-100 border-t-2 border-r-2 border-blue-600" style={{height: '54.2%'}}><div className="text-center mt-2 text-xs font-bold text-blue-800">Mar (38)</div></div>
-              <div className="w-1/6 bg-orange-100 border-t-2 border-r-2 border-orange-600" style={{height: '81.4%'}}><div className="text-center mt-2 text-xs font-bold text-orange-800">Apr (57)</div></div>
-              <div className="w-1/6 bg-orange-100 border-t-2 border-r-2 border-orange-600" style={{height: '97.1%'}}><div className="text-center mt-2 text-xs font-bold text-orange-800">May (68)</div></div>
-              <div className="w-1/6 bg-orange-100 border-t-2 border-blue-600" style={{height: '78.5%'}}><div className="text-center mt-2 text-xs font-bold text-orange-800">Jun (55)</div></div>
-            </div>
+                <rect x="316.5" y="250" width="108" height="99.5" fill="#dbeafe" stroke="#2563eb" strokeWidth="1.5" />
+                <text x="370.5" y="267" fontSize="14" fill="#1e40af" fontWeight="bold" textAnchor="middle">Mar (38)</text>
+
+                <rect x="424.5" y="131.25" width="108" height="218.25" fill="#ffedd5" stroke="#ea580c" strokeWidth="1.5" />
+                <text x="478.5" y="148" fontSize="14" fill="#9a3412" fontWeight="bold" textAnchor="middle">Apr (57)</text>
+
+                <rect x="532.5" y="62.5" width="108" height="287" fill="#ffedd5" stroke="#ea580c" strokeWidth="1.5" />
+                <text x="586.5" y="80" fontSize="14" fill="#9a3412" fontWeight="bold" textAnchor="middle">May (68)</text>
+
+                <rect x="640.5" y="143.75" width="108" height="205.75" fill="#ffedd5" stroke="#ea580c" strokeWidth="1.5" />
+                <text x="694.5" y="161" fontSize="14" fill="#9a3412" fontWeight="bold" textAnchor="middle">Jun (55)</text>
+              </g>
+
+              {/* Average Line */}
+              <line x1="100" y1="175" x2="780" y2="175" stroke="#dc2626" strokeWidth="2" strokeDasharray="6 4" />
+              <text x="110" y="165" fontSize="14" fill="#dc2626" fontWeight="bold">Level production, using average monthly forecast demand</text>
+              
+              {/* Forecast Demand Arrow */}
+              <text x="586.5" y="30" fontSize="14" fill="#475569" fontWeight="bold" textAnchor="middle">Forecast demand</text>
+              <line x1="586.5" y1="35" x2="586.5" y2="58" stroke="#475569" strokeWidth="1.5" />
+              <polygon points="586.5,62 582,54 591,54" fill="#475569" />
+
+              {/* X-axis Labels */}
+              {[
+                {label: 'Jan.', days: 22, x: 154.5},
+                {label: 'Feb.', days: 18, x: 262.5},
+                {label: 'Mar.', days: 21, x: 370.5},
+                {label: 'Apr.', days: 21, x: 478.5},
+                {label: 'May', days: 22, x: 586.5},
+                {label: 'June', days: 20, x: 694.5},
+              ].map(tick => (
+                <g key={tick.label}>
+                  <line x1={tick.x} y1="350" x2={tick.x} y2="355" stroke="#334155" strokeWidth="1.5" />
+                  <polygon points={`${tick.x},355 ${tick.x-3},360 ${tick.x+3},360`} fill="#334155" />
+                  <text x={tick.x} y="375" fontSize="14" fill="#334155" textAnchor="middle">{tick.label}</text>
+                  <text x={tick.x} y="405" fontSize="14" fill="#334155" textAnchor="middle">{tick.days}</text>
+                  <polygon points={`${tick.x},390 ${tick.x-3},385 ${tick.x+3},385`} fill="#334155" />
+                </g>
+              ))}
+              
+              {/* X-axis Legend */}
+              <text x="760" y="375" fontSize="14" fill="#334155" textAnchor="start">= Month</text>
+              <text x="760" y="405" fontSize="14" fill="#334155" textAnchor="start">= Number of</text>
+              <text x="770" y="420" fontSize="14" fill="#334155" textAnchor="start">working days</text>
+            </svg>
           </div>
         </Card>
 
@@ -459,7 +515,7 @@ const CaseStudies = () => {
                 <line x1="340" y1="475" x2="270" y2="450" stroke="#333" strokeWidth="1" />
               </svg>
             </div>
-            <p className="text-slate-500 text-lg font-medium mt-10 ml-8">Figure 2: Cumulative Graph for Plan 1</p>
+            <p className="text-slate-500 text-lg font-medium mt-10 text-center">Figure 2: Cumulative Graph for Plan 1</p>
           </div>
 
           <div className="overflow-x-auto">
@@ -556,7 +612,7 @@ const CaseStudies = () => {
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <Card title="Table 13.6: Capacity & Demand">
+          <Card title="Table 3: Capacity & Demand">
             <table className="w-full text-sm text-left border-collapse">
               <thead className="bg-slate-100">
                 <tr><th className="border p-2">Item</th><th className="border p-2">Mar</th><th className="border p-2">Apr</th><th className="border p-2">May</th></tr>
@@ -584,7 +640,7 @@ const CaseStudies = () => {
           </Card>
         </div>
 
-        <Card title="Table 13.7: The Transportation Matrix (Initial Feasible Solution)">
+        <Card title="Table 4: The Transportation Matrix (Initial Feasible Solution)">
           <div className="bg-slate-50 p-4 border-l-4 border-blue-600 mb-4 text-sm text-slate-800">
             <strong>How to solve:</strong> Go column by column (starting March). Satisfy the demand by allocating units from the available supply rows, <strong>always choosing the available cell with the lowest unit cost</strong> in that column until demand is met. Move to the next column.
           </div>
