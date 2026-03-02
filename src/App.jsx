@@ -40,7 +40,6 @@ const SectionHeader = ({ title, subtitle }) => (
   </div>
 );
 
-
 // --- SECTIONS ---
 
 const HomeSection = () => (
@@ -71,10 +70,23 @@ const HomeSection = () => (
     </div>
 
     <Card title="About Group 3" className="bg-blue-50 border-blue-100">
-      <p className="text-blue-900">
+      <p className="text-blue-900 mb-4">
         We are students studying Production & Operations Management. This interactive guide was designed to help our peers 
         grasp the core concepts of Aggregate Planning step-by-step. Use the navigation menu to proceed through the chapter.
       </p>
+      <div className="bg-white p-4 rounded-lg border border-blue-200">
+        <h4 className="font-bold text-blue-800 mb-3 flex items-center gap-2"><Users className="w-5 h-5"/> Group Members:</h4>
+        <ul className="grid sm:grid-cols-2 gap-y-2 gap-x-4 text-sm text-slate-700">
+          <li>Ngô Trần Xuân Nghi - 2452817</li>
+          <li>Nguyễn Châu Tuyết Anh - 2452055</li>
+          <li>Ngô Hồng Khánh - 2452498</li>
+          <li>Vũ Kim Long - 2411947</li>
+          <li>Lê Hoàng Phương Nghi - 2452815</li>
+          <li>Nguyễn Thành Nam - 2452796</li>
+          <li>Đặng Thy Phương - 2453021</li>
+          <li>Nguyễn Chí Tài - 2453134</li>
+        </ul>
+      </div>
     </Card>
   </div>
 );
@@ -705,21 +717,28 @@ const Summary = () => (
     
     <div className="grid gap-4 md:grid-cols-3">
       <div className="bg-blue-600 p-6 rounded-xl text-white shadow-md">
-        <h4 className="font-bold text-xl mb-2 flex items-center gap-2"><Target className="w-5 h-5"/> Objective</h4>
-        <p className="text-blue-100 text-sm">
-          Aggregate planning balances capacity and demand over a 3-18 month horizon, primarily aiming to minimize costs while meeting forecasts.
+        <h4 className="font-bold text-xl mb-2 flex items-center gap-2"><Target className="w-5 h-5"/> 1. S&OP and Aggregate Plan Purpose</h4>
+        <p className="text-blue-100 text-sm leading-relaxed">
+          Sales and Operations Planning (S&OP) aligns functional areas and supply-chain partners. Its output, the <strong>aggregate plan</strong>, enables manufacturing and service firms to meet changing demand while maintaining a competitive production strategy.
         </p>
       </div>
       <div className="bg-orange-500 p-6 rounded-xl text-white shadow-md">
-        <h4 className="font-bold text-xl mb-2 flex items-center gap-2"><Users className="w-5 h-5"/> S&OP Process</h4>
-        <p className="text-orange-100 text-sm">
-          Requires cross-functional coordination. Translates strategic plans into operations. Results in an Aggregate Plan, which is then disaggregated into an MPS.
-        </p>
+        <h4 className="font-bold text-xl mb-2 flex items-center gap-2"><Briefcase className="w-5 h-5"/> 2. Scope and Planning Techniques</h4>
+        <div className="text-orange-100 text-sm space-y-2">
+          <p>Aggregate planning covers an <strong>intermediate horizon (3–18 months)</strong> and sets levels for:</p>
+          <ul className="list-disc pl-5">
+            <li>Inventory</li>
+            <li>Production</li>
+            <li>Subcontracting</li>
+            <li>Employment</li>
+          </ul>
+          <p className="pt-2">Key techniques include: Graphical approach, Transportation method (linear programming).</p>
+        </div>
       </div>
       <div className="bg-slate-700 p-6 rounded-xl text-white shadow-md">
-        <h4 className="font-bold text-xl mb-2 flex items-center gap-2"><Briefcase className="w-5 h-5"/> Strategies</h4>
-        <p className="text-slate-300 text-sm">
-          Planners manipulate 5 Capacity options (supply side) and 3 Demand options (marketing side) using Chase, Level, or Mixed strategies.
+        <h4 className="font-bold text-xl mb-2 flex items-center gap-2"><PieChart className="w-5 h-5"/> 3. Operational Importance and System Link</h4>
+        <p className="text-slate-300 text-sm leading-relaxed">
+          The aggregate plan is a major responsibility of operations managers and ensures efficient resource use. It forms the basis for the <strong>master production schedule</strong>, which supports detailed scheduling and MRP systems.
         </p>
       </div>
     </div>
@@ -728,7 +747,6 @@ const Summary = () => (
 
 const Practice = () => {
   const [answers, setAnswers] = useState({});
-  const [showResults, setShowResults] = useState(false);
 
   const questions = [
     {
@@ -811,10 +829,12 @@ const Practice = () => {
   ];
 
   const handleSelect = (qId, optionIdx) => {
-    if(showResults) return;
+    // Only allow selecting if not already answered
+    if(answers[qId] !== undefined) return;
     setAnswers(prev => ({ ...prev, [qId]: optionIdx }));
   };
 
+  const totalAnswered = Object.keys(answers).length;
   const score = Object.keys(answers).filter(qId => answers[qId] === questions.find(q => q.id == qId).correct).length;
 
   return (
@@ -823,67 +843,60 @@ const Practice = () => {
       
       <Card>
         <div className="space-y-8">
-          {questions.map((question, i) => (
-            <div key={question.id} className="space-y-3">
-              <h4 className="font-medium text-slate-800 text-lg">{i + 1}. {question.q}</h4>
-              <div className="space-y-2">
-                {question.options.map((opt, oIdx) => {
-                  const isSelected = answers[question.id] === oIdx;
-                  const isCorrect = question.correct === oIdx;
-                  
-                  let btnClass = "w-full text-left px-4 py-3 rounded-lg border transition-all duration-200 ";
-                  
-                  if (!showResults) {
-                    btnClass += isSelected ? "bg-blue-50 border-blue-500 text-blue-700 shadow-sm" : "bg-white border-slate-200 hover:bg-slate-50 text-slate-700";
-                  } else {
-                    if (isCorrect) {
-                      btnClass += "bg-green-50 border-green-500 text-green-700 font-medium";
-                    } else if (isSelected && !isCorrect) {
-                      btnClass += "bg-red-50 border-red-500 text-red-700";
+          {questions.map((question, i) => {
+            const isAnswered = answers[question.id] !== undefined;
+            
+            return (
+              <div key={question.id} className="space-y-3">
+                <h4 className="font-medium text-slate-800 text-lg">{i + 1}. {question.q}</h4>
+                <div className="space-y-2">
+                  {question.options.map((opt, oIdx) => {
+                    const isSelected = answers[question.id] === oIdx;
+                    const isCorrect = question.correct === oIdx;
+                    
+                    let btnClass = "w-full text-left px-4 py-3 rounded-lg border transition-all duration-200 ";
+                    
+                    if (!isAnswered) {
+                      btnClass += "bg-white border-slate-200 hover:bg-slate-50 hover:border-blue-300 text-slate-700 cursor-pointer";
                     } else {
-                      btnClass += "bg-white border-slate-200 text-slate-400 opacity-50";
+                      if (isCorrect) {
+                        btnClass += "bg-green-50 border-green-500 text-green-800 font-medium";
+                      } else if (isSelected && !isCorrect) {
+                        btnClass += "bg-red-50 border-red-500 text-red-800 font-medium";
+                      } else {
+                        btnClass += "bg-white border-slate-200 text-slate-400 opacity-50 cursor-not-allowed";
+                      }
                     }
-                  }
 
-                  return (
-                    <button 
-                      key={oIdx}
-                      onClick={() => handleSelect(question.id, oIdx)}
-                      className={btnClass}
-                      disabled={showResults}
-                    >
-                      {opt}
-                    </button>
-                  );
-                })}
+                    return (
+                      <button 
+                        key={oIdx}
+                        onClick={() => handleSelect(question.id, oIdx)}
+                        className={btnClass}
+                        disabled={isAnswered}
+                      >
+                        {opt}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
-          {showResults && (
-            <div className={`p-4 rounded-lg font-bold text-center text-lg ${score === questions.length ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}`}>
-              You scored {score} out of {questions.length}!
-            </div>
-          )}
-
-          <div className="pt-4 border-t">
-            {!showResults ? (
+          {totalAnswered > 0 && (
+            <div className="pt-6 border-t mt-8 space-y-4">
+              <div className="text-center text-xl font-bold text-slate-800">
+                Current Score: <span className="text-blue-600">{score}</span> / {totalAnswered}
+              </div>
               <button 
-                onClick={() => setShowResults(true)}
-                disabled={Object.keys(answers).length < questions.length}
-                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-bold py-3 rounded-lg transition-colors"
-              >
-                Submit Answers
-              </button>
-            ) : (
-              <button 
-                onClick={() => { setShowResults(false); setAnswers({}); }}
+                onClick={() => setAnswers({})}
                 className="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 rounded-lg transition-colors"
               >
-                Try Again
+                Reset Quiz
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </Card>
     </div>
