@@ -231,24 +231,60 @@ const Strategies = () => (
       </Card>
     </div>
 
-    <Card title="4.3 Mixed Strategies" className="bg-slate-800 text-white">
-      <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 className="text-xl font-bold text-blue-400 mb-2">Chase Strategy</h4>
-          <p className="text-slate-300 text-sm">
-            Attempts to achieve output rates for each period that match the demand forecast for that period.
-            Often used in service organizations where inventory cannot be held (education, hospitality).
-          </p>
+    <Card title="4.3 Mixing Options To Develop A Plan">
+      <p className="text-slate-700 mb-10 text-lg">
+        The Chase Strategy and the Level Strategy are two extremes of how firms respond using capacity and demand options. Most firms use a <strong>Mixed Strategy</strong> combining multiple options to achieve minimum cost.
+      </p>
+
+      {/* STRATEGY SPECTRUM DIAGRAM */}
+      <div className="relative mb-12 max-w-4xl mx-auto px-4 mt-8">
+        {/* Large Background Arrow */}
+        <svg 
+          className="absolute inset-0 w-full h-[160%] -top-[30%] z-0 text-blue-100 opacity-80" 
+          preserveAspectRatio="none" 
+          viewBox="0 0 100 100"
+        >
+          <polygon points="2,30 75,30 75,10 98,50 75,90 75,70 2,70" fill="currentColor" />
+        </svg>
+
+        {/* 3 Strategy Cards */}
+        <div className="relative z-10 flex justify-between gap-4 md:gap-8 py-4">
+          <div className="flex-1 bg-white border-2 border-blue-700 rounded-[2rem] flex items-center justify-center py-10 md:py-14 shadow-md transition-shadow hover:shadow-lg">
+            <span className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">Level</span>
+          </div>
+          <div className="flex-1 bg-white border-2 border-blue-700 rounded-[2rem] flex items-center justify-center py-10 md:py-14 shadow-md transition-shadow hover:shadow-lg">
+            <span className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">Mixed</span>
+          </div>
+          <div className="flex-1 bg-white border-2 border-blue-700 rounded-[2rem] flex items-center justify-center py-10 md:py-14 shadow-md transition-shadow hover:shadow-lg">
+            <span className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">Chase</span>
+          </div>
         </div>
-        <div>
-          <h4 className="text-xl font-bold text-blue-400 mb-2">Level Strategy</h4>
-          <p className="text-slate-300 text-sm">
-            Production is uniform from period to period. Let finished-goods inventory vary to buffer differences, or find alternative work for employees. Leads to better quality and less turnover (e.g., Toyota).
-          </p>
+
+        {/* Bottom Labels */}
+        <div className="relative z-10 flex justify-between px-2 md:px-8 mt-6">
+          <div className="bg-blue-700 text-white px-8 md:px-12 py-2 md:py-3 font-semibold text-lg md:text-xl shadow-md rounded">
+            Capacity
+          </div>
+          <div className="bg-blue-700 text-white px-8 md:px-12 py-2 md:py-3 font-semibold text-lg md:text-xl shadow-md rounded">
+            Demand
+          </div>
         </div>
       </div>
-      <div className="mt-4 pt-4 border-t border-slate-600 text-sm text-slate-400 italic">
-        * Most firms use a Mixed Strategy combining multiple options to achieve minimum cost.
+
+      {/* Explanations */}
+      <div className="grid md:grid-cols-2 gap-6 mt-12">
+        <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 shadow-sm">
+          <h4 className="text-xl font-bold text-blue-800 mb-3">Level Strategy</h4>
+          <p className="text-slate-700 text-sm leading-relaxed">
+            Production is uniform from period to period. Let finished-goods inventory vary to buffer differences, or find alternative work for employees. Leads to better quality and less turnover (e.g., Toyota). Focuses heavily on managing <strong>Capacity</strong>.
+          </p>
+        </div>
+        <div className="bg-blue-50 p-6 rounded-xl border border-blue-100 shadow-sm">
+          <h4 className="text-xl font-bold text-blue-800 mb-3">Chase Strategy</h4>
+          <p className="text-slate-700 text-sm leading-relaxed">
+            Attempts to achieve output rates for each period that match the demand forecast for that period. Often used in service organizations where inventory cannot be held (education, hospitality). Reacts directly to <strong>Demand</strong>.
+          </p>
+        </div>
       </div>
     </Card>
   </div>
@@ -807,7 +843,7 @@ const Practice = () => {
   const questions = [
     {
       id: 1,
-      q: "In plan 1 of case 1, what does the number 50 tubes per day represent?",
+      q: "In this case, what does the number 56 tubes per day represent?",
       options: [
         "A. The factory’s maximum daily production capacity", 
         "B. The standard production output assumed by the company", 
