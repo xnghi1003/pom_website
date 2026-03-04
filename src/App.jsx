@@ -40,6 +40,7 @@ const SectionHeader = ({ title, subtitle }) => (
   </div>
 );
 
+
 // --- SECTIONS ---
 
 const HomeSection = () => (
@@ -237,10 +238,10 @@ const Strategies = () => (
       </p>
 
       {/* STRATEGY SPECTRUM DIAGRAM */}
-      <div className="relative mb-12 max-w-4xl mx-auto px-4 mt-8">
+      <div className="relative mb-12 max-w-3xl mx-auto px-4 mt-8">
         {/* Large Background Arrow */}
         <svg 
-          className="absolute inset-0 w-full h-[160%] -top-[30%] z-0 text-blue-100 opacity-80" 
+          className="absolute inset-0 w-full h-[150%] -top-[25%] z-0 text-blue-100 opacity-80" 
           preserveAspectRatio="none" 
           viewBox="0 0 100 100"
         >
@@ -248,24 +249,24 @@ const Strategies = () => (
         </svg>
 
         {/* 3 Strategy Cards */}
-        <div className="relative z-10 flex justify-between gap-4 md:gap-8 py-4">
-          <div className="flex-1 bg-white border-2 border-blue-700 rounded-[2rem] flex items-center justify-center py-10 md:py-14 shadow-md transition-shadow hover:shadow-lg">
-            <span className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">Level</span>
+        <div className="relative z-10 flex justify-between gap-3 md:gap-6 py-4">
+          <div className="flex-1 bg-white border-2 border-blue-700 rounded-3xl flex items-center justify-center py-8 md:py-10 shadow-md transition-shadow hover:shadow-lg">
+            <span className="text-xl md:text-2xl font-extrabold text-blue-900 tracking-wide">Level</span>
           </div>
-          <div className="flex-1 bg-white border-2 border-blue-700 rounded-[2rem] flex items-center justify-center py-10 md:py-14 shadow-md transition-shadow hover:shadow-lg">
-            <span className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">Mixed</span>
+          <div className="flex-1 bg-white border-2 border-blue-700 rounded-3xl flex items-center justify-center py-8 md:py-10 shadow-md transition-shadow hover:shadow-lg">
+            <span className="text-xl md:text-2xl font-extrabold text-blue-900 tracking-wide">Mixed</span>
           </div>
-          <div className="flex-1 bg-white border-2 border-blue-700 rounded-[2rem] flex items-center justify-center py-10 md:py-14 shadow-md transition-shadow hover:shadow-lg">
-            <span className="text-2xl md:text-4xl font-extrabold text-blue-900 tracking-wide">Chase</span>
+          <div className="flex-1 bg-white border-2 border-blue-700 rounded-3xl flex items-center justify-center py-8 md:py-10 shadow-md transition-shadow hover:shadow-lg">
+            <span className="text-xl md:text-2xl font-extrabold text-blue-900 tracking-wide">Chase</span>
           </div>
         </div>
 
         {/* Bottom Labels */}
-        <div className="relative z-10 flex justify-between px-2 md:px-8 mt-6">
-          <div className="bg-blue-700 text-white px-8 md:px-12 py-2 md:py-3 font-semibold text-lg md:text-xl shadow-md rounded">
+        <div className="relative z-10 flex justify-between px-2 md:px-6 mt-4">
+          <div className="bg-blue-700 text-white px-6 md:px-8 py-1.5 md:py-2 font-semibold text-base md:text-lg shadow-md rounded">
             Capacity
           </div>
-          <div className="bg-blue-700 text-white px-8 md:px-12 py-2 md:py-3 font-semibold text-lg md:text-xl shadow-md rounded">
+          <div className="bg-blue-700 text-white px-6 md:px-8 py-1.5 md:py-2 font-semibold text-base md:text-lg shadow-md rounded">
             Demand
           </div>
         </div>
