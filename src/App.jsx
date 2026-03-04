@@ -40,7 +40,6 @@ const SectionHeader = ({ title, subtitle }) => (
   </div>
 );
 
-
 // --- SECTIONS ---
 
 const HomeSection = () => (
@@ -587,7 +586,7 @@ const CaseStudies = () => {
         </Card>
 
         {/* PLAN 2 */}
-        <Card title="Plan 2: Subcontracting with Constant Workforce (Level Strategy)">
+        <Card title="Plan 2: Subcontracting with Constant Workforce (Mixed Strategy)">
           <div className="bg-orange-50 p-4 border-l-4 border-orange-500 mb-4 text-sm text-slate-800">
             <strong>How to solve:</strong> Set the workforce level to meet the <em>lowest</em> demand month exactly (March = 38 units/day).
             Workers needed = 38 / 5 = <strong>7.6 workers</strong>. Produce a constant 38 units/day. Subcontract all excess demand. No inventory is held.
@@ -753,8 +752,8 @@ const CaseStudies = () => {
                   <td className="border p-2 pl-4 italic bg-slate-50">Apr Subcontract</td>
                   <td className="border h-12 relative p-2 align-bottom text-center text-slate-300 bg-slate-100 font-bold text-lg">X</td>
                   <td className="border h-12 relative p-2 align-bottom text-center font-bold text-red-600"><span className="absolute top-1 right-1 border rounded bg-slate-50 px-1 font-normal text-slate-500">70</span>50</td>
-                  <td className="border h-12 relative p-2 align-bottom text-center font-bold text-red-600"><span className="absolute top-1 right-1 border rounded bg-slate-50 px-1 font-normal text-slate-500">72</span>100</td>
-                  <td className="border h-12 relative p-2 align-bottom text-center"><span className="absolute top-1 right-1 border rounded bg-slate-50 px-1 font-normal text-slate-500">0</span></td>
+                  <td className="border h-12 relative p-2 align-bottom text-center"><span className="absolute top-1 right-1 border rounded bg-slate-50 px-1 font-normal text-slate-500">72</span></td>
+                  <td className="border h-12 relative p-2 align-bottom text-center font-bold text-red-600"><span className="absolute top-1 right-1 border rounded bg-slate-50 px-1 font-normal text-slate-500">0</span>100</td>
                   <td className="border p-2 text-center font-bold bg-slate-100 text-blue-800">150</td>
                 </tr>
                 {/* Period 3 */}
