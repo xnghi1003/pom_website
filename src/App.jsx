@@ -587,7 +587,7 @@ const CaseStudies = () => {
         </Card>
 
         {/* PLAN 2 */}
-        <Card title="Plan 2: Subcontracting with Constant Workforce (Mixed Strategy)">
+        <Card title="Plan 2: Subcontracting with Constant Workforce (Level Strategy)">
           <div className="bg-orange-50 p-4 border-l-4 border-orange-500 mb-4 text-sm text-slate-800">
             <strong>How to solve:</strong> Set the workforce level to meet the <em>lowest</em> demand month exactly (March = 38 units/day).
             Workers needed = 38 / 5 = <strong>7.6 workers</strong>. Produce a constant 38 units/day. Subcontract all excess demand. No inventory is held.
