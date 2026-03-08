@@ -843,7 +843,7 @@ const Practice = () => {
   const questions = [
     {
       id: 1,
-      q: "In this case, what does the number 56 tubes per day represent?",
+      q: "In the Figure 1: Graph of Forecast vs. Average Demand, what does the number 50 tubes per day represent?",
       options: [
         "A. The factory’s maximum daily production capacity", 
         "B. The standard production output assumed by the company", 
