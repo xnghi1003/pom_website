@@ -865,12 +865,12 @@ const Practice = () => {
     },
     {
       id: 3,
-      q: "Under Aggregate Plan 1, ABC Paint Corp. keeps a constant production rate, workers and does not allow overtime, hiring, layoffs, or subcontracting. Which of the following statements best explains the overall impact of this strategy?",
+      q: "Which strategy is used in Aggregate Plan 1 at ABC Paint Corp.?",
       options: [
-        "A. It minimizes total cost by eliminating inventory and matching production exactly to demand each month.", 
-        "B. It stabilizes the workforce and guarantees no shortages by using inventory as a buffer, but results in high inventory carrying costs that may reduce cost efficiency.", 
-        "C. It increases flexibility by adjusting workforce size monthly, leading to higher responsiveness but unstable labor costs.", 
-        "D. It reduces labor cost significantly by lowering production during low-demand months, even if customer demand is not fully satisfied."
+        "A. Chase strategy that adjusts workforce to match demand", 
+        "B. Pure level strategy with constant production and workforce", 
+        "C. Mixed strategy using subcontracting and overtime", 
+        "D. Demand smoothing strategy using safety stock."
       ],
       correct: 1
     },
