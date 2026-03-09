@@ -854,6 +854,17 @@ const Practice = () => {
     },
     {
       id: 2,
+      q: "Which of the following is considered a capacity option in aggregate planning?",
+      options: [
+        "A. Offering seasonal discounts to increase demand", 
+        "B. Developing counterseasonal products", 
+        "C. Subcontracting during peak demand periods", 
+        "D. Back ordering customer orders"
+      ],
+      correct: 2
+    },
+    {
+      id: 3,
       q: "If key cost factors such as subcontracting or hiring costs change, what should management do?",
       options: [
         "A. Maintain the current plan to preserve operational stability", 
@@ -864,18 +875,18 @@ const Practice = () => {
       correct: 1
     },
     {
-      id: 3,
+      id: 4,
       q: "Which strategy is used in Aggregate Plan 1 at ABC Paint Corp.?",
       options: [
         "A. Chase strategy that adjusts workforce to match demand", 
         "B. Pure level strategy with constant production and workforce", 
         "C. Mixed strategy using subcontracting and overtime", 
-        "D. Demand smoothing strategy using safety stock."
+        "D. Demand smoothing strategy using safety stock"
       ],
       correct: 1
     },
     {
-      id: 4,
+      id: 5,
       q: "What is the main objective of Aggregate Plan 2?",
       options: [
         "A. Minimize inventory holding costs", 
@@ -886,7 +897,7 @@ const Practice = () => {
       correct: 1
     },
     {
-      id: 5,
+      id: 6,
       q: "How is the workforce sized in Aggregate Plan 2?",
       options: [
         "A. Based on average monthly demand", 
@@ -897,7 +908,7 @@ const Practice = () => {
       correct: 2
     },
     {
-      id: 6,
+      id: 7,
       q: "What is the main purpose of using a mathematical optimization approach in aggregate planning?",
       options: [
         "A. To eliminate demand variability", 
@@ -908,13 +919,35 @@ const Practice = () => {
       correct: 2
     },
     {
-      id: 7,
+      id: 8,
       q: "Which method was used to solve the aggregate planning problem?",
       options: [
         "A. Regression analysis", 
         "B. Simulation modeling", 
         "C. Transportation Method of Linear Programming", 
         "D. Decision tree analysis"
+      ],
+      correct: 2
+    },
+    {
+      id: 9,
+      q: "When do we need exactly 2.5 workers to be 100% efficient. What should a real-world manager do?",
+      options: [
+        "A. Hire 2 people and ask them to grow extra arms.", 
+        "B. Hire 3 people and accept that the budget will be a bit higher.", 
+        "C. Try to find a 'half-person' on LinkedIn.", 
+        "D. Just ignore the 0.5 and hope for the best."
+      ],
+      correct: 1
+    },
+    {
+      id: 10,
+      q: "Which of these costs is the hardest to see on a balance sheet but can 'kill' a business forever?",
+      options: [
+        "A. The price of a gallon of paint.", 
+        "B. The electricity bill for the warehouse.", 
+        "C. A loyal customer switched to a competitor because we were 'Out of Stock'.", 
+        "D. The cost of buying new pens for the office"
       ],
       correct: 2
     }
